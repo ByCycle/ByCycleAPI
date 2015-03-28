@@ -1,5 +1,5 @@
 {
-  "name": "visitbritain-hack",
+  "name": "bycycleapi",
   "version": "0.0.1",
   "description": "",
   "keywords": [],
@@ -22,9 +22,13 @@
     "gulp-load-plugins": "^0.9.0",
     "gulp-util": "^3.0.4"
   },
+  "engines": {
+    "iojs": "1.0.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DEBUG=visitbritain-hack:* gulp dev"
+    "dev": "DEBUG=visitbritain-hack:* gulp dev",
+    "start": "node dev/index.js"
   },
   "license": "",
   "private": true

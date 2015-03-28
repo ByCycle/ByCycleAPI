@@ -7,7 +7,7 @@ let travelTimeAPI = require('./lib/travel-time-api');
 module.exports = function (callback) {
   let config = {
     env: process.env.NODE_ENV || 'development',
-    port: 4000,
+    port: process.env.PORT || 4000,
     debug: {
       namespace: 'visitbritain-hack'
     },
