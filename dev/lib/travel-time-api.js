@@ -31,11 +31,11 @@ function getRoute(client, requiredParams, origin, maxTime, destinations) {
     points: destinations
   });
 
-  return Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
   client.post('v3/routes', data, function (err, res, body) {
     if (err) {
       reject(err);
-      return
+      return;
     }
 
       if (res.statusCode !== 200) {
@@ -52,7 +52,7 @@ function getRoute(client, requiredParams, origin, maxTime, destinations) {
       return dest;
     });
 
-    let destinations = sortBy(destsList, 'time').map(function (dest) {
+    destsList = sortBy(destsList, 'time').map(function (dest) {
       let d = {};
       d[dest.id] = dest;
       return d;
@@ -60,7 +60,7 @@ function getRoute(client, requiredParams, origin, maxTime, destinations) {
 
     resolve({
       statusCode: 200,
-      destinations: destinations
+      destinations: destsList
     });
   });
   });
