@@ -17,7 +17,9 @@ function start(config, callback) {
   server = http.createServer(expressApp);
   expressApp.set('etag', 'weak');
 
+  expressApp.use(middlewares.requestLogger);
   expressApp.use(middlewares.generalCachingPolicy);
+  expressApp.use(middlewares.bodyParser);
 
   Object.keys(routes).forEach(function (route) {
     expressApp.use('/' + route, routes[route]);

@@ -9,8 +9,8 @@ module.exports = function (apiKey) {
 
   return {
     categories: client.single.bind(client, 'items', { type: 'category', limit: 20 }),
-    locations: function(lon, lat) {
-      client.batch.bind(client, 'items', 10, { type: 'location', near: `${lon},${lat}`, limit: 50 })
+    locations: function(lat, lon) {
+      return client.batch('items', 100, { type: 'location', near: `${lon},${lat}`, limit: 50 });
     }
   };
 };

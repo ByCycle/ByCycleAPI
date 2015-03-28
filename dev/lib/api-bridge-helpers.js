@@ -1,12 +1,10 @@
 'use strict';
 
 module.exports = {
-  vBLocationsToCordArray: vBLocationsToCordArray
+  vBLocationToCordArray: vBLocationToCordArray
 };
 
-function vBLocationsToCordArray(locations) {
-  return locations.map(function (l) {
-    l.location = [l.location.lat, l.location.lng];
-    return l;
-  });
+function vBLocationToCordArray(loc) {
+  loc.location = [loc.location.lat, loc.location.lng];
+  return loc;
 }

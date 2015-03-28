@@ -9,7 +9,7 @@ let extend = _.extend;
 
 /* eslint-disable camelcase */
 module.exports = function (appID, appKey) {
-  let client = request.createClient('http://api.travelimeapp.com');
+  let client = request.createClient('http://api.traveltimeapp.com');
   let requiredParams = {
     app_id: appID,
     app_key: appKey
@@ -32,11 +32,12 @@ function getRoute(client, requiredParams, origin, maxTime, destinations) {
   });
 
   return new Promise(function (resolve, reject) {
-  client.post('v3/routes', data, function (err, res, body) {
-    if (err) {
-      reject(err);
-      return;
-    }
+    console.log(JSON.stringify(data));
+    client.post('v3/routes', data, function (err, res, body) {
+      if (err) {
+        reject(err);
+        return;
+      }
 
       if (res.statusCode !== 200) {
         resolve({
@@ -45,23 +46,19 @@ function getRoute(client, requiredParams, origin, maxTime, destinations) {
         return;
       }
 
-    let destsList = Object.keys(body).map(function (id) {
-      let dest = body[id];
-      dest.id = id;
+      let routes = Object.keys(body).map(function (id) {
+        let dest = body[id];
+        dest.id = id;
 
-      return dest;
-    });
+        return dest;
+      });
 
-    destsList = sortBy(destsList, 'time').map(function (dest) {
-      let d = {};
-      d[dest.id] = dest;
-      return d;
-    });
+      routes = sortBy(routes, 'time');
 
-    resolve({
-      statusCode: 200,
-      destinations: destsList
+      resolve({
+        statusCode: 200,
+        routes: routes
+      });
     });
-  });
   });
 }
