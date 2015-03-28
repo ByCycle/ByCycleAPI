@@ -6,6 +6,7 @@ module.exports = function (config) {
     bodyParser: require('body-parser').json({ type: 'application/json' }),
     notFoundHandler: require('./not-found-handler')(config),
     errorHandler: require('./error-handler')(config),
-    generalCachingPolicy: require('./general-caching-policy')(config)
+    generalCachingPolicy: require('./general-caching-policy')(config),
+    cors: require('cors')
   };
 };

@@ -20,6 +20,7 @@ function start(config, callback) {
   expressApp.use(middlewares.requestLogger);
   expressApp.use(middlewares.generalCachingPolicy);
   expressApp.use(middlewares.bodyParser);
+  expressApp.use(middlewares.cors());
 
   Object.keys(routes).forEach(function (route) {
     expressApp.use('/' + route, routes[route]);
