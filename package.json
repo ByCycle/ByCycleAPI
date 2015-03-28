@@ -1,0 +1,30 @@
+{
+  "name": "visitbritain-hack",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "main": "index.js",
+  "dependencies": {
+    "debug": "^2.1.3",
+    "express": "^4.12.3",
+    "lodash": "^3.6.0",
+    "moment": "^2.9.0",
+    "morgan": "^1.5.2",
+    "request-json": "^0.5.2",
+    "winston": "^0.9.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-eslint": "^0.7.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-load-plugins": "^0.9.0",
+    "gulp-util": "^3.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=visitbritain-hack:* gulp dev"
+  },
+  "license": "",
+  "private": true
+}
