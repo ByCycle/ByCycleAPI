@@ -15,6 +15,11 @@ if (require.main === module) {
     }
   });
 
+  // production for hackathons prototypes not for the real world
+  process.on('uncaughtException', function (err) {
+    console.error('Panic: uncaught exception. %s \n%s', err.message, err.stack);
+  });
+
   return;
 }
 
