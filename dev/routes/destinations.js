@@ -9,9 +9,9 @@ module.exports = function (config) {
 
   router.get('/', function (req, res, next) {
     let params = req.query;
-    params.location = params.location.split(',');
-    let location = [parseFloat(params.location[0]), parseFloat(params.location[1])];
     let maxDuration = parseInt(params.maxDuration);
+    let location = params.location.split(',');
+    location = [parseFloat(location[0]), parseFloat(location[1])];
 
     locationsRouteMapper(config, location, params.interest, maxDuration)
     .then(function (locations) {
@@ -21,7 +21,7 @@ module.exports = function (config) {
       });
     })
     .catch(function (err) {
-      next(err, req, res);
+      next(err);
     });
   });
 

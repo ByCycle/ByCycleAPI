@@ -11,6 +11,18 @@ module.exports = function (apiKey) {
     categories: client.single.bind(client, 'items', { type: 'category', limit: 20 }),
     locations: function(lat, lon) {
       return client.batch('items', 100, { type: 'location', near: `${lon},${lat}`, limit: 50 });
+    },
+    location: function (id) {
+      return client.single('items', { type: 'location', ids: id })
+      .then(function (l) {
+        if (l.body.length > 0) {
+          l.body = l.body[0];
+        } else {
+          l.body = null;
+        }
+
+        return l;
+      });
     }
   };
 };

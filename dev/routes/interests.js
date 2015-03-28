@@ -27,7 +27,7 @@ module.exports = function (config) {
       });
     })
     .catch(function (err) {
-      next(err, req, res);
+      next(err);
     });
   });
 

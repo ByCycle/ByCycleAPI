@@ -3,6 +3,7 @@
 module.exports = function (config) {
   return {
     interests: require('./interests')(config),
-    destinations: require('./destinations')(config)
+    destinations: require('./destinations')(config),
+    route: require('./route')(config)
   };
 };
