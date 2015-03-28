@@ -20,8 +20,9 @@ module.exports = function (callback) {
       }
     },
     logger: winston,
-    travelTime: travelTimeAPI('41b58484', 'c7ff6957e616a34acbbadbdbdbed1ac4'),
-    visitBritain: visitBritainAPI('A9NsGgd9UmxR')
+    travelTime: travelTimeAPI(process.env.TRAVEL_TIME_API_KEY,
+                              process.env.TRAVEL_TIME_API_SECRET),
+    visitBritain: visitBritainAPI(process.env.VISIT_BRITAIN_API_KEY)
   };
 
   callback(null, config);
