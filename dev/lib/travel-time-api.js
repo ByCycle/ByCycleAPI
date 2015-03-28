@@ -32,7 +32,6 @@ function getRoute(client, requiredParams, origin, maxTime, destinations) {
   });
 
   return new Promise(function (resolve, reject) {
-    console.log(JSON.stringify(data));
     client.post('v3/routes', data, function (err, res, body) {
       if (err) {
         reject(err);
@@ -43,6 +42,11 @@ function getRoute(client, requiredParams, origin, maxTime, destinations) {
         resolve({
           statusCode: res.statusCode
         });
+        return;
+      }
+
+      if (body.code) {
+        reject(new Error('travel time api error response, code: ' + body.code));
         return;
       }
 
